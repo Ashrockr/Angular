@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
 	name: FormControl;
 	password: FormControl;
+	isFirst:boolean;
 	isInValid:boolean=false;
-	isLoading:boolean;
+	isLoading:boolean=true;
 	isValidUser:boolean=false;
 	message:string;
 	constructor(private loginService:LoginService,
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 		) { }
 
 	ngOnInit() {
-		this.isLoading=false;
+		this.isFirst=false;
 		this.name = new FormControl('',Validators.required);
 		this.password = new FormControl('', Validators.required);
 		this.loginForm = new FormGroup({
@@ -38,24 +39,21 @@ export class LoginComponent implements OnInit {
 		});
 
 	}
+	
 		validate(){
-
-		this.loginService.validate(this.user).subscribe(valid => {
+			this.isLoading=true;
+			this.isFirst=true;
+			this.loginService.validate(this.user).subscribe(valid => {
 															this.isValidUser= valid;
-																this.isLoading=true;
+															this.isLoading=false;
+															this.router.navigate(['empDetails']);
 														}
 														, (error)=>{
 															this.message="Cannot connect to service! Try again later.";
-															this.isLoading=false;}
+															console.log("error has c");
+															this.isLoading=false;
+															this.loginForm.reset();}
 														);
-		if(this.isValidUser){
-			console.log(this.isValidUser);
-			this.router.navigate(['empDetails']);
-		}
-		else{
-			this.isLoading=false;
-		}
-	}
-
 		
+	}		
 }
