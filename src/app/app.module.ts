@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EmpDetailsComponent } from './emp-details/emp-details.component';
@@ -11,6 +11,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginService } from './login.service';
 import { EmployeeService } from './employee.service';
 import { LoadingComponent } from './loading/loading.component';
+import { LoaderService } from './loading/loader.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { LoadingComponent } from './loading/loading.component';
   ],
   providers: [
     LoginService,
-    EmployeeService
+    EmployeeService,
+    LoaderService
+  ],
+  exports:[
+    LoadingComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,24 +1,21 @@
-import { Component, OnInit,Injectable } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
+import { LoaderService } from './loader.service';
+import { Subscription } from 'rxjs/Subscription';
+import { LoaderState } from './loader';
 declare var $;
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.css']
 })
-@Injectable()
 export class LoadingComponent implements OnInit {
-
-  constructor() { }
+	
+  constructor( ) { }
 
   ngOnInit() {
-  	
+  		$("#myModal").modal('show');
   }
 
-  show(){
-  	$('#myModal').modal('show');
-  }
-  hide(){
-  	$('#myModal').modal('hide');
-  }
+  
 
 }
