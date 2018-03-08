@@ -11,6 +11,12 @@
 .card:focus, .card:hover {
 	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
-.d-flex{
-	height: 80vh;
+.top-buffer{
+	margin-top: 15vh;
+}
+.error-space{
+	height:8vh;
+}
+.bottom-padding{
+	padding-bottom: 5em;
 }

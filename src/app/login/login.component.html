@@ -1,49 +1,50 @@
 
-<app-loading *ngIf="isFirst" [show]="isLoading"></app-loading>
+<app-loading *ngIf="isFirst"></app-loading>
 <div class="container ">
-	<div  class="d-flex align-items-center">
+	<div  class="top-buffer ">
 		<div class="col-md-6 mx-auto">   
-			<div *ngIf="isValidUser">
-				<div class="alert alert-danger " role="alert">
-					<strong>Invalid credential!</strong> Enter valid credentials.
-				</div> 
+			<div class="error-space bottom-padding">
+				<div *ngIf="!isValidUser">
+					<div class="alert alert-danger " role="alert">
+						<strong>Invalid credential!</strong> Enter valid credentials.
+					</div> 
+				</div>
+				<div [@errorShow]="isDown" >
+					<div class="alert alert-danger " role="alert">
+						{{message}}
+					</div> 
+				</div>
 			</div>
-			<div *ngIf="message">
-				<div class="alert alert-danger " role="alert">
-					{{message}}
-				</div> 
-			</div>
-
 			<span class="anchor" id="formLogin"></span>
 			<!-- form card login -->
-			<div class="card text-white bg-primary">
-				<div class="card-header bg-primary text-white  ">
-					<h3 class="mb-0">Login </h3>
+			<div  class="card text-white bg-primary" [@load1]>
+				<div class="card-header bg-primary text-white  " >
+					<h3 class="mb-0" *ngIf=" animate " >Login </h3>
 				</div>
-				<div class="card-body container bg-light">
+				<div class="card-body container bg-light"  >
 					<form class="form" autocomplete="off" id="formLogin" [formGroup]="loginForm" (ngSubmit)="validate()">
 						<div class="form-group "  >
-							<label for="uname1" class="text-primary">Username</label>
-							<input type="text" class="form-control form-control-lg " [(ngModel)]="user.name" id="uname1" required name="username" formControlName="name" [ngClass]="{
+							<label for="username" class="text-primary" *ngIf=" animate ">Username</label>
+							<input type="text" placeholder="Enter username..." class="form-control form-control " [(ngModel)]="user.name" id="username" required name="username" formControlName="name" [ngClass]="{
 							'is-invalid': name.invalid && ( name.dirty || name.touched),
-							'is-valid': name.valid && ( name.dirty || name.touched)}">
-							<div class="text-danger"  *ngIf=" name.invalid && ( name.dirty || name.touched)">
-								<small>Name is required</small>
+							'is-valid': name.valid && ( name.dirty || name.touched)}" *ngIf=" animate " autofocus="">
+							<div class="text-danger" [@error]=" name.invalid && ( name.dirty || name.touched)" >
+								<small >Name is required</small>
 							</div>
 
 						</div>
 						<div class="form-group text-primary" >
-							<label>Password</label>
-							<input type="password" class="form-control form-control-lg" id="password" required autocomplete="new-password" [(ngModel)]="user.password" name="password" formControlName="password"  [ngClass]="{
+							<label *ngIf=" animate " for="password">Password</label>
+							<input type="password" *ngIf=" animate " placeholder="Enter password..." class="form-control form-control" id="password" required autocomplete="new-password" [(ngModel)]="user.password" name="password" formControlName="password"  [ngClass]="{
 							'is-invalid': password.invalid && ( password.dirty || password.touched),
 							'is-valid': password.valid && ( password.dirty || password.touched)
 						}">
-						<div class="text-danger" *ngIf=" password.invalid && (password.dirty || password.touched)">
+						<div class="text-danger" [@error]=" password.invalid && (password.dirty || password.touched)">
 							<small>Password is required</small>
 						</div>
 					</div>
 
-					<div class="form-group text-primary">
+					<div class="form-group text-primary" *ngIf=" animate ">
 						<input type="submit" class="btn btn-primary btn-lg" id="myButton" [disabled]="loginForm.invalid"  value="Login">
 					</div>
 

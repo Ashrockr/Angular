@@ -1,3 +1,40 @@
-<p>
-  emp-details works!
-</p>
+<app-loading *ngIf="isFirst"></app-loading>
+<app-add-emp *ngIf="addEmp" (addEmp)="addEmployee($event)"></app-add-emp>
+
+<div class="container" >
+	<h1 class="h3">Welcome {{userName}}</h1>
+	<div *ngIf="deletedEmployee" class="alert alert-danger " role="alert">
+		<strong>{{deleteMsg}}</strong> 
+	</div>
+	<table class="table col-sm-10 border"  [@employees]="employees">
+		<thead class="thead-inverse"> 
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>SALARY</th>
+				<th>DELETE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<ul class="list-group list-group-flush" *ngFor =" let employee of employees">
+			    <li class="list-group-item" >
+			    	<div class="row">
+			    		{{employee.id}}
+				{{employee.name}} 
+				{{employee.salary}}
+				<button class="btn btn-danger" (click)=" delete(employee) ">Delete</button>
+			    	</div>
+			    </li>
+			  </ul>
+			<!-- <tr *ngFor =" let employee of employees" >
+				<td scope="row">{{employee.id}}</td>
+				<td>{{employee.name}} </td>
+				<td>{{employee.salary}}</td>
+				<td><button class="btn btn-danger" (click)=" delete(employee) ">Delete</button></td>
+			</tr> -->
+		</tbody>			
+	</table>
+
+	<div class="offset-sm-5 col-sm-2"><button h class="btn btn-primary  btn-rounded span12 " (click)="add()">Add</button></div>
+
+</div>

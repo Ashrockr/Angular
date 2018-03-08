@@ -1,3 +1,40 @@
-<p>
-  add-emp works!
-</p>
+
+<div class="myModal" id="myModal" [@loads] >
+		<div class="modal-content card" *ngIf=" animate ">
+			<div class="card-header text-primary">
+				<strong>Add Employee</strong>
+			</div>
+			<div class="modal-body" >
+				<form class="form" autocomplete="off" id="addEmpForm" [formGroup]="addEmpForm" (ngSubmit)="addEmployee()">
+						
+						<div class="form-group "  >
+							<label for="name" class="text-primary" >Employee Name</label>
+							<input type="text" placeholder="Enter employee name..." class="form-control form-control " [(ngModel)]="employee.name" id="name" required name="name" formControlName="name" [ngClass]="{
+							'is-invalid': name.invalid && ( name.dirty || name.touched),
+							'is-valid': name.valid && ( name.dirty || name.touched)}" autofocus=""  >
+							<div class="text-danger" [@error]=" name.invalid && ( name.dirty || name.touched)" >
+								<small >Name is required</small>
+							</div>
+
+						</div>
+						<div class="form-group text-primary" >
+							<label for="salary">Salary</label>
+							<input type="number" placeholder="Enter salary..." class="form-control" id="salary" required [(ngModel)]="employee.salary" name="salary" 
+							formControlName="salary"  [ngClass]="{
+							'is-invalid': salary.invalid && ( salary.dirty || salary.touched),
+							'is-valid': salary.valid && ( salary.dirty || salary.touched)
+						}">
+						<div class="text-danger" [@error]=" salary.invalid && ( salary.dirty || salary.touched)">
+							<small>Salary is required</small>
+						</div>
+					</div>
+
+					<div class="form-group text-primary container">
+						<input type="submit" class="btn btn-success btn-lg " id="myButton" [disabled]="addEmpForm.invalid"  value="Add Employee">
+						<button  class="btn btn-danger btn-lg" id="myButton" (click)="close()" > Close</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+</div>
