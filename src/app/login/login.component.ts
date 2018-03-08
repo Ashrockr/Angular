@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
 															this.router.navigate(['empDetails']);
 
 			},1000);
-			
+			}
 			/*this.loginService.validate(this.user).subscribe(valid => {
 															this.isValidUser= valid;
 															this.isDown=false;

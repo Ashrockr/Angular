@@ -49,9 +49,11 @@ export class EmpDetailsComponent implements OnInit {
 	message: string;
 	animate:boolean;
 	addEmp:boolean;
+  deletedEmployee:boolean;
   constructor(private empService: EmployeeService) { }
 
   ngOnInit() {
+    this.deletedEmployee=false;
 		this.isFirst=true;
 		this.animate=true;
 		this.addEmp=false;
@@ -80,6 +82,7 @@ export class EmpDetailsComponent implements OnInit {
   }
 
   delete(employee: Employee): void {
+    this.deletedEmployee=true;
   this.employees = this.employees.filter(h => h !== employee);
   this.empService.deleteEmployee(employee).subscribe();
 	}
