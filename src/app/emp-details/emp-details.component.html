@@ -1,25 +1,27 @@
 <app-loading *ngIf="isFirst"></app-loading>
 <app-add-emp *ngIf="addEmp" (addEmp)="addEmployee($event)"></app-add-emp>
 
-<div class="container-fluid cream top-buffer" >
+<div class="container-fluid cream" >
 	<div *ngIf="deletedEmployee" class="alert alert-danger " role="alert">
 		<strong>Employee Deleted</strong> 
-	</div>
-	<div class="  container table-responsive"  [@employees]="employees">
-		<div class="round-div  row text-center font-weight-bold"> 
+	</div><br><br>
+	<div class="container table-responsive  "  [@employees]="employees">
+		<div class="round-div round-div-header col-12 row  font-weight-bold"> 
 			
-				<div class="col-xl-2">ID</div>
-				<div class="col-xl-5">NAME</div>
-				<div class="col-xl-3">SALARY</div>
-				<div class="col-xl-2">DELETE</div>
+				<div class="col-2">ID</div>
+				<div class="col-4">NAME</div>
+				<div class="col-3">SALARY</div>
+				<div class="col-3 pull-right">DELETE</div>
 			
 		</div>
-			<div class="" *ngFor =" let employee of employees">
-			    <div class="round-div  row "> 			
-					<div class="col-xl-2">{{employee.id}}</div>
-					<div class="col-xl-5">{{employee.name}} </div>
-					<div class="col-xl-3">{{employee.salary}}</div>
-					<div class="col-xl-2"><button class="btn btn-danger btn-sm" (click)=" delete(employee) ">Delete</button></div>
+		<div class="clearfix"></div>
+			<div class="left-margin" *ngFor =" let employee of employees">
+			    <div class="round-div col-12 row  "> 			
+					<div class="col-2">{{employee.id}}</div>
+					<div class="col-4">{{employee.name }} </div>
+					<div class="col-3">{{employee.salary |currency:"INR"}}</div>
+					<div class="col-3"><button class="btn btn-danger btn-sm pull-right" (click)=" delete(employee) ">Delete</button></div>
+					
 				</div>
 			</div>
 			<!-- <tr *ngFor =" let employee of employees" >
