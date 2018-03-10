@@ -1,10 +1,10 @@
 
 <div class="myModal" id="myModal" [@loads] >
-		<div class="modal-content card" *ngIf=" animate ">
+		<div class="modal-content container card" *ngIf=" animate ">
 			<div class="card-header text-primary">
 				<strong>Add Employee</strong>
 			</div>
-			<div class="modal-body" >
+			<div class="modal-body card-body" >
 				<form class="form" autocomplete="off" id="addEmpForm" [formGroup]="addEmpForm" (ngSubmit)="addEmployee()">
 						
 						<div class="form-group "  >
@@ -29,9 +29,9 @@
 						</div>
 					</div>
 
-					<div class="form-group text-primary container">
-						<input type="submit" class="btn btn-success btn-lg " id="myButton" [disabled]="addEmpForm.invalid"  value="Add Employee">
-						<button  class="btn btn-danger btn-lg" id="myButton" (click)="close()" > Close</button>
+					<div class="">
+						<button type="submit" class="btn btn-success btn-block " id="myButton" [disabled]="addEmpForm.invalid">Add Employee</button>
+						<button  class="btn btn-danger btn-block" id="myButton" (click)="close()" > Close</button>
 					</div>
 
 				</form>

@@ -2,10 +2,11 @@
 <app-add-emp *ngIf="addEmp" (addEmp)="addEmployee($event)"></app-add-emp>
 
 <div class="container-fluid cream" >
+	<br><br>
 	<div *ngIf="deletedEmployee" class="alert alert-danger " role="alert">
 		<strong>Employee Deleted</strong> 
-	</div><br><br>
-	<div class="container table-responsive  "  [@employees]="employees">
+	</div>
+	<div class="container "  [@employees]="employees">
 		<div class="round-div round-div-header col-12 row  font-weight-bold"> 
 			
 				<div class="col-2">ID</div>
@@ -32,6 +33,10 @@
 			</tr> -->		
 	</div>
 
-	<div class="offset-sm-5 col-sm-2"><button h class="btn btn-primary  btn-rounded span12 " (click)="add()">Add</button></div>
+	<div class="col-12  ">
+		<div class="col-12 col-lg-1 mx-auto">
+		<button class="btn btn-primary btn-lg-block btn-block btn-rounded mx-auto " (click)="add()">Add</button>
+		</div>
+	</div>
 
 </div>
