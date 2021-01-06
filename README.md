@@ -1,6 +1,7 @@
 # EmployeeManagement
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+Hosted on Github Page: https://ashrockr.github.io/Angular/
 
 ## Development server
 
